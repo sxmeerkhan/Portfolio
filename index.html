@@ -33,7 +33,9 @@
 
   .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding: 0 48px; padding-top: 100px; position: relative; overflow: hidden; background: #fff; }
   .hero-bg-text { position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: clamp(120px, 18vw, 260px); color: #f0ece6; top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; z-index: 0; user-select: none; letter-spacing: -4px; }
-  .hero-left { display: flex; flex-direction: column; justify-content: center; z-index: 1; padding: 60px 0; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; z-index: 1; padding: 60px 0; position: relative; }
+  .hero-accent-line { position: absolute; top: 0; left: 0; width: 4px; height: 60px; background: linear-gradient(to bottom, var(--accent), transparent); animation: slideDown 0.8s ease-out; }
+  @keyframes slideDown { from { height: 0; } to { height: 60px; } }
   .hero-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
   .hero-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); }
   .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 8vw, 110px); line-height: 0.92; letter-spacing: -1px; margin-bottom: 32px; color: #111; }
@@ -46,8 +48,11 @@
   .btn-primary:hover { background: #e63d0f; transform: translateY(-2px); }
   .btn-outline { background: transparent; color: #111; padding: 14px 32px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 2px solid #111; cursor: none; transition: all 0.2s; }
   .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-  .hero-right { display: flex; flex-direction: column; justify-content: center; align-items: flex-end; z-index: 1; gap: 16px; }
-  .stat-card { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 24px 32px; width: 240px; position: relative; overflow: hidden; animation: fadeUp 0.6s ease both; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .hero-right { display: flex; flex-direction: column; justify-content: center; align-items: flex-end; z-index: 1; gap: 16px; position: relative; }
+  .hero-right::before { content: ''; position: absolute; top: -40px; right: -80px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255, 77, 28, 0.08) 0%, transparent 70%); border-radius: 50%; z-index: 0; }
+  .stat-card { position: relative; z-index: 1; }
+  .stat-card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 24px 32px; width: 240px; position: relative; overflow: hidden; animation: fadeUp 0.6s ease both; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.3s ease; }
+  .stat-card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); border-left-color: #e63d0f; }
   .stat-card:nth-child(2) { animation-delay: 0.1s; margin-right: 32px; }
   .stat-card:nth-child(3) { animation-delay: 0.2s; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -151,7 +156,8 @@
   .timeline-date { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; text-transform: uppercase; }
   .timeline-role { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; margin-bottom: 4px; color: #111; }
   .timeline-company { font-size: 13px; color: #888; margin-bottom: 12px; }
-  .timeline-desc { font-size: 13px; line-height: 1.8; color: #555; max-width: 560px; }
+  .timeline-desc { font-size: 13px; line-height: 1.8; color: #555; max-width: 560px; list-style: disc; padding-left: 20px; }
+  .timeline-desc li { margin-bottom: 8px; }
 
   /* CONTACT */
   .contact { background: #111; text-align: center; position: relative; overflow: hidden; }
@@ -213,9 +219,10 @@
 <section class="hero">
   <div class="hero-bg-text">MARKETING</div>
   <div class="hero-left">
+    <div class="hero-accent-line"></div>
     <div class="hero-tag">Marketing Portfolio 2026</div>
     <h1 class="hero-name">SAMEER<br><span class="outline">KHAN</span></h1>
-    <p class="hero-desc">Creative and data-driven marketing professional with 2+ years delivering multi-channel integrated campaigns across global markets. Proven track record in TikTok and short-form video content creation, social media growth, and brand-consistent content strategy. MSc Marketing combined with a BSc in Computer Applications — a rare blend of creative campaign execution and technical fluency. </p>
+    <p class="hero-desc">Creative and data-driven marketing professional with 2+ years delivering integrated campaigns across diverse brands and markets. Skilled in campaign strategy, content creation, brand management, and performance marketing. MSc Marketing combined with a BSc in Computer Applications — a rare blend of strategic thinking and technical fluency. </p>
     <h2 class="hero-subtitle"><strong>Marketing Executive</strong></h2>
     <div class="hero-cta">
       <a href="#work" class="btn-primary">View Work</a>
@@ -237,11 +244,11 @@
 
 <!-- ICICI -->
     <div class="case-card fade-in">
-      <div class="case-number">02</div>
+      <div class="case-number">01</div>
       <div>
         <div class="case-company"><span class="brand-name">ICICI Prudential Life Insurance</span> · Mumbai</div>
-        <div class="case-title">Festive Campaign Series & Content Strategy</div>
-        <p class="case-desc">Created a series of festive social media campaigns for one of India's largest life insurance brands, connecting product messaging with cultural moments including Baisakhi and Vishu. Developed a 3-month content calendar and conducted competitor analysis that directly shaped Q2 strategy.</p>
+        <div class="case-title">Seasonal Campaign Strategy & Execution</div>
+        <p class="case-desc">Developed and executed a series of seasonal social media campaigns aligned with key cultural moments. Created content calendar strategy and conducted market analysis that informed campaign direction. Delivered integrated campaigns across multiple platforms with strong performance metrics.</p>
         <div class="case-tags"><span class="tag">Festive Campaigns</span><span class="tag">Content Strategy</span><span class="tag">Canva</span><span class="tag">Instagram</span><span class="tag">Facebook</span></div>
       </div>
       <div class="case-right-panel">
@@ -258,11 +265,11 @@
 
     <!-- Harmonia -->
     <div class="case-card fade-in">
-      <div class="case-number">03</div>
+      <div class="case-number">02</div>
       <div>
         <div class="case-company"><span class="brand-name">Harmonia Productions</span> · Brighton, UK</div>
-        <div class="case-title">Artist Growth, TikTok & Album Launch Campaigns</div>
-        <p class="case-desc">Managed the full social media presence for independent artist Michael Wynne over nearly a year. Produced TikTok and short-form video content for album and single launches, grew his following from 4,500 to 6,500, and ran Spotify playlist outreach campaigns to 12+ curators to drive streaming traction.</p>
+        <div class="case-title">Social Growth & Launch Campaigns</div>
+        <p class="case-desc">Managed comprehensive social media strategy and content production for product launches. Drove audience growth through strategic content and platform optimization. Executed multi-channel outreach campaigns to key influencers and partners, resulting in strong engagement and audience expansion.</p>
         <div class="case-tags"><span class="tag">TikTok</span><span class="tag">Instagram</span><span class="tag">Spotify Outreach</span><span class="tag">Artist Marketing</span><span class="tag">Short-Form Video</span></div>
         <div class="tiktok-links">
           <a href="https://vt.tiktok.com/ZSxBP8aL1/" target="_blank" class="tiktok-btn"><span class="tiktok-icon">▶</span> Watch TikTok — Track 1</a>
@@ -284,6 +291,9 @@
         </div>
       </div>
       <div class="case-right-panel">
+        <div class="case-gallery">
+          <img src="Mick n Phil Mouth Harp.jpg" alt="Harmonia Productions Artist" onclick="openLightbox(this.src)">
+        </div>
         <div class="metrics-row">
           <div class="metric"><div class="metric-value">+2K</div><div class="metric-label">Followers</div></div>
           <div class="metric"><div class="metric-value">44%</div><div class="metric-label">Growth</div></div>
@@ -294,11 +304,11 @@
 
     <!-- Regina -->
     <div class="case-card fade-in">
-      <div class="case-number">04</div>
+      <div class="case-number">03</div>
       <div>
         <div class="case-company"><span class="brand-name">Transform Your Performance</span> · Remote</div>
-        <div class="case-title">Brand Building & Client Acquisition for Executive Coach</div>
-        <p class="case-desc">Built the Instagram presence for executive coach Regina Huber from the ground up. Produced Reels and story content from scratch — including testimonial posts and brand introduction stories — growing her following 5x. Ran targeted outreach that directly contributed to 2 new client acquisitions.</p>
+        <div class="case-title">Brand Building & Growth Strategy</div>
+        <p class="case-desc">Developed and launched comprehensive social media brand strategy from the ground up. Created content library including testimonials and brand storytelling. Executed targeted campaigns that drove significant audience growth and measurable business results through strategic platform management.</p>
         <div class="case-tags"><span class="tag">Instagram Reels</span><span class="tag">Story Content</span><span class="tag">Paid Promotions</span><span class="tag">Outreach</span><span class="tag">Personal Branding</span></div>
         <div class="social-proof" style="margin-top:16px;">
           <a href="https://www.instagram.com/reginahubernyclyon?igsh=Z3ljZjJ0MDczbDBn" target="_blank" class="social-link">↗ @reginahubernyclon</a>
@@ -357,11 +367,11 @@
   <div class="section-label">Experience</div>
   <h2 class="section-title">THE <span class="outline">JOURNEY</span></h2>
   <div class="timeline">
-    <div class="timeline-item fade-in"><div class="timeline-date">Aug 2025 — Present</div><div class="timeline-role">Senior Marketing Executive</div><div class="timeline-company">Mphasis · Bengaluru, India </div><p class="timeline-desc">Leading multi-channel integrated campaign delivery across EU, Middle Eastern, and US markets. Managing briefs, creative reviews, stakeholder approvals, and performance optimisation at scale — generating 1M+ monthly impressions.</p></div>
-    <div class="timeline-item fade-in"><div class="timeline-date">Jun 2025 — Aug 2025</div><div class="timeline-role">Digital Content Intern</div><div class="timeline-company">Airbus · Bengaluru, India</div><p class="timeline-desc">Developed marketing and communications materials for innovation campaigns. Built a branded digital content hub to centralise innovation updates and drive internal engagement across teams.</p></div>
-    <div class="timeline-item fade-in"><div class="timeline-date">Jan 2025 — May 2025</div><div class="timeline-role">Social Media Marketing Intern</div><div class="timeline-company">ICICI Prudential Life Insurance · Mumbai</div><p class="timeline-desc">Led festive campaign series and competitor analysis. Built a 3-month content calendar that drove 500K+ monthly impressions across Instagram, LinkedIn & Facebook.</p></div>
-    <div class="timeline-item fade-in"><div class="timeline-date">Sep 2024 — Apr 2025</div><div class="timeline-role">Digital Marketing Intern (Freelance)</div><div class="timeline-company">Harmonia Productions · Brighton, UK</div><p class="timeline-desc">Grew artist Michael Wynne's social following by 44% across a year-long engagement. Owned TikTok content creation and ran Spotify playlist outreach campaigns to 12+ curators.</p></div>
-    <div class="timeline-item fade-in"><div class="timeline-date">Jan 2025 — Apr 2025</div><div class="timeline-role">Social Media & Campaign Executive (Freelance)</div><div class="timeline-company">Transform Your Performance · Remote</div><p class="timeline-desc">Grew Regina Huber's Instagram 5x from scratch. Produced Reels and story content, managed paid promotions, and executed outreach that brought in 2 new coaching clients.</p></div>
+    <div class="timeline-item fade-in"><div class="timeline-date">Aug 2025 — Present</div><div class="timeline-role">Senior Marketing Executive</div><div class="timeline-company">Mphasis · Bengaluru, India </div><ul class="timeline-desc"><li>Leading multi-channel integrated campaign delivery across EU, Middle Eastern, and US markets</li><li>Managing briefs, creative reviews, stakeholder approvals, and performance optimisation at scale</li><li>Generating 1M+ monthly impressions across priority markets</li></ul></div>
+    <div class="timeline-item fade-in"><div class="timeline-date">Jun 2025 — Aug 2025</div><div class="timeline-role">Digital Content Intern</div><div class="timeline-company">Airbus · Bengaluru, India</div><ul class="timeline-desc"><li>Developed marketing and communications materials for innovation campaigns</li><li>Built a branded digital content hub to centralise innovation updates</li><li>Drove internal engagement and awareness across teams</li></ul></div>
+    <div class="timeline-item fade-in"><div class="timeline-date">Jan 2025 — May 2025</div><div class="timeline-role">Social Media Marketing Intern</div><div class="timeline-company">ICICI Prudential Life Insurance · Mumbai</div><ul class="timeline-desc"><li>Led festive campaign series and competitor analysis</li><li>Built a 3-month content calendar strategy</li><li>Drove 500K+ monthly impressions across Instagram, LinkedIn & Facebook</li></ul></div>
+    <div class="timeline-item fade-in"><div class="timeline-date">Sep 2024 — Apr 2025</div><div class="timeline-role">Digital Marketing Intern (Freelance)</div><div class="timeline-company">Harmonia Productions · Brighton, UK</div><ul class="timeline-desc"><li>Grew social following by 44% across a year-long engagement</li><li>Owned content creation and platform strategy</li><li>Ran multi-channel outreach campaigns to key partners and influencers</li></ul></div>
+    <div class="timeline-item fade-in"><div class="timeline-date">Jan 2025 — Apr 2025</div><div class="timeline-role">Social Media & Campaign Executive (Freelance)</div><div class="timeline-company">Transform Your Performance · Remote</div><ul class="timeline-desc"><li>Grew Instagram presence 5x from scratch</li><li>Produced content including Reels, stories, and branded materials</li><li>Executed paid promotions and targeted outreach campaigns</li><li>Delivered measurable business results through strategic management</li></ul></div>
   </div>
 </section>
 
