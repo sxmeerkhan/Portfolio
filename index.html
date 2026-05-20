@@ -94,7 +94,19 @@
   .case-card:hover::after { transform: scaleX(1); }
   .case-card:hover { background: #fff; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
   .case-number { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: #ddd; line-height: 1; }
-  .case-company { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .case-company { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .brand-name {
+    color: #fff;
+    background: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 3px;
+    display: inline-block;
+    letter-spacing: 1px;
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+  }
   .case-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; margin-bottom: 14px; color: #111; }
   .case-desc { font-size: 13.5px; line-height: 1.8; color: #111; }
   .case-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
@@ -223,41 +235,11 @@
   <h2 class="section-title">CASE <span class="outline">STUDIES</span></h2>
   <div class="case-studies">
 
-    <!-- Mphasis -->
-    <div class="case-card fade-in">
-      <div class="case-number">01</div>
-      <div>
-        <div class="case-company">Mphasis · Bengaluru, India </div>
-        <div class="case-title">Multi-Market Campaign Management</div>
-        <ul class="case-desc">
-          <li>Managed 20+ monthly integrated campaigns across LinkedIn, Facebook & X with end-to-end delivery coordination</li>
-          <li>Coordinated creative and media teams across European, Middle Eastern & US markets</li>
-          <li>Optimised paid and organic targeting strategies that scaled reach to 1M+ monthly impressions across priority regions</li>
-          <li>Contributed directly to funnel pipeline growth through targeted campaign optimization</li>
-          <li>Maintained full campaign documentation — briefs, asset reviews, approval logs and delivery timelines</li>
-          <li>Improved accountability and consistency across a multi-market, multi-team operation</li>
-        </ul>
-        <div class="case-tags"><span class="tag">LinkedIn Ads</span><span class="tag">Meta</span><span class="tag">X / X</span><span class="tag">Campaign Management</span><span class="tag">Brand Governance</span></div>
-        <div class="social-proof">
-          <a href="https://linkedin.com" class="social-link" target="_blank">↗ LinkedIn Page</a>
-        </div>
-      </div>
-      <div class="case-right-panel">
-        <div class="case-gallery single">
-          <img src="mphasis_post.png" alt="Mphasis LinkedIn post" onclick="openLightbox(this.src)">
-        </div>
-        <div class="metrics-row">
-          <div class="metric"><div class="metric-value">500K+</div><div class="metric-label">Monthly Impressions</div></div>
-          <div class="metric"><div class="metric-value">20+</div><div class="metric-label">Campaigns / Mo</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ICICI -->
+<!-- ICICI -->
     <div class="case-card fade-in">
       <div class="case-number">02</div>
       <div>
-        <div class="case-company">ICICI Prudential Life Insurance · Mumbai</div>
+        <div class="case-company"><span class="brand-name">ICICI Prudential Life Insurance</span> · Mumbai</div>
         <div class="case-title">Festive Campaign Series & Content Strategy</div>
         <p class="case-desc">Created a series of festive social media campaigns for one of India's largest life insurance brands, connecting product messaging with cultural moments including Baisakhi and Vishu. Developed a 3-month content calendar and conducted competitor analysis that directly shaped Q2 strategy.</p>
         <div class="case-tags"><span class="tag">Festive Campaigns</span><span class="tag">Content Strategy</span><span class="tag">Canva</span><span class="tag">Instagram</span><span class="tag">Facebook</span></div>
@@ -278,7 +260,7 @@
     <div class="case-card fade-in">
       <div class="case-number">03</div>
       <div>
-        <div class="case-company">Harmonia Productions · Brighton, UK</div>
+        <div class="case-company"><span class="brand-name">Harmonia Productions</span> · Brighton, UK</div>
         <div class="case-title">Artist Growth, TikTok & Album Launch Campaigns</div>
         <p class="case-desc">Managed the full social media presence for independent artist Michael Wynne over nearly a year. Produced TikTok and short-form video content for album and single launches, grew his following from 4,500 to 6,500, and ran Spotify playlist outreach campaigns to 12+ curators to drive streaming traction.</p>
         <div class="case-tags"><span class="tag">TikTok</span><span class="tag">Instagram</span><span class="tag">Spotify Outreach</span><span class="tag">Artist Marketing</span><span class="tag">Short-Form Video</span></div>
@@ -314,7 +296,7 @@
     <div class="case-card fade-in">
       <div class="case-number">04</div>
       <div>
-        <div class="case-company">Transform Your Performance · Remote</div>
+        <div class="case-company"><span class="brand-name">Transform Your Performance</span> · Remote</div>
         <div class="case-title">Brand Building & Client Acquisition for Executive Coach</div>
         <p class="case-desc">Built the Instagram presence for executive coach Regina Huber from the ground up. Produced Reels and story content from scratch — including testimonial posts and brand introduction stories — growing her following 5x. Ran targeted outreach that directly contributed to 2 new client acquisitions.</p>
         <div class="case-tags"><span class="tag">Instagram Reels</span><span class="tag">Story Content</span><span class="tag">Paid Promotions</span><span class="tag">Outreach</span><span class="tag">Personal Branding</span></div>
