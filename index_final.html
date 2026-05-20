@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sameer Khan — Marketing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #ffffff;
+    --white: #111111;
+    --cream: #f5f5f5;
+    --accent: #ff4d1c;
+    --accent2: #ff4d1c;
+    --mid: #f7f4f0;
+    --grey: #666666;
+    --border: #e0ddd8;
+    --card-bg: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; cursor: none; }
+
+  .cursor { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; }
+  .cursor-ring { width: 36px; height: 36px; border: 1px solid var(--accent); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transition: all 0.08s ease; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 24px 48px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; color: var(--white); }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding: 0 48px; padding-top: 100px; position: relative; overflow: hidden; background: #fff; }
+  .hero::before { content: ''; position: absolute; top: -10%; right: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255, 77, 28, 0.04) 0%, transparent 70%); border-radius: 50%; z-index: 0; }
+  .hero::after { content: ''; position: absolute; bottom: -15%; left: 10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255, 77, 28, 0.03) 0%, transparent 70%); border-radius: 50%; z-index: 0; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; z-index: 1; padding: 60px 0; position: relative; }
+  .hero-accent-line { position: absolute; top: 0; left: 0; width: 4px; height: 60px; background: linear-gradient(to bottom, var(--accent), transparent); animation: slideDown 0.8s ease-out; }
+  @keyframes slideDown { from { height: 0; } to { height: 60px; } }
+  .hero-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .hero-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); }
+  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 8vw, 110px); line-height: 0.92; letter-spacing: -1px; margin-bottom: 32px; color: #111; }
+  .hero-name .outline { -webkit-text-stroke: 2px var(--accent); color: transparent; }
+  .hero-desc { font-size: 15px; line-height: 1.8; color: #555; max-width: 420px; margin-bottom: 24px; }
+  .hero-desc strong { color: #111; font-weight: 600; }
+  .hero-subtitle { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 1px; color: #111; margin-bottom: 48px; font-weight: bold; }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: none; cursor: none; transition: all 0.2s; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
+  .btn-primary:hover { background: #e63d0f; transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: #111; padding: 14px 32px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 2px solid #111; cursor: none; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .hero-right { display: flex; flex-direction: column; justify-content: center; align-items: flex-end; z-index: 1; gap: 16px; position: relative; }
+  .hero-right::before { content: ''; position: absolute; top: -40px; right: -80px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255, 77, 28, 0.08) 0%, transparent 70%); border-radius: 50%; z-index: 0; }
+  .stat-card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 24px 32px; width: 240px; position: relative; overflow: hidden; animation: fadeUp 0.6s ease both; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.3s ease; z-index: 1; }
+  .stat-card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); border-left-color: #e63d0f; }
+  .stat-card:nth-child(2) { animation-delay: 0.1s; margin-right: 32px; }
+  .stat-card:nth-child(3) { animation-delay: 0.2s; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: #111; line-height: 1; margin-bottom: 4px; }
+  .stat-number span { color: var(--accent); }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); }
+
+  section { padding: 100px 48px; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 80px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: 1px; margin-bottom: 64px; color: #111; }
+  .section-title .outline { -webkit-text-stroke: 2px var(--accent); color: transparent; }
+
+  /* ABOUT */
+  .about { background: var(--mid); position: relative; }
+  .about::before { content: ''; position: absolute; top: -10%; right: 5%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255, 77, 28, 0.03) 0%, transparent 70%); border-radius: 50%; z-index: 0; pointer-events: none; }
+  .about::after { content: ''; position: absolute; bottom: 5%; left: -3%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 77, 28, 0.02) 0%, transparent 70%); border-radius: 50%; z-index: 0; pointer-events: none; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; position: relative; z-index: 1; }
+  .about-text p { font-size: 15px; line-height: 1.9; color: #555; margin-bottom: 20px; }
+  .about-text p strong { color: #111; font-weight: 600; }
+  .about-skills { display: flex; flex-direction: column; gap: 16px; }
+  .skill-item { display: flex; flex-direction: column; gap: 8px; }
+  .skill-name { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px; display: flex; justify-content: space-between; color: #111; }
+  .skill-bar { height: 2px; background: #ddd; position: relative; overflow: hidden; }
+  .skill-fill { height: 100%; background: var(--accent); animation: fillBar 1.2s ease both; animation-delay: 0.3s; }
+  @keyframes fillBar { from { width: 0; } }
+
+  /* CASE STUDIES */
+  .work { background: #fff; position: relative; }
+  .work::before { content: ''; position: absolute; top: 20%; left: -5%; width: 350px; height: 350px; background: radial-gradient(circle, rgba(255, 77, 28, 0.02) 0%, transparent 70%); border-radius: 50%; z-index: 0; pointer-events: none; }
+  .work::after { content: ''; position: absolute; bottom: 10%; right: -3%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 77, 28, 0.02) 0%, transparent 70%); border-radius: 50%; z-index: 0; pointer-events: none; }
+  .case-studies { display: flex; flex-direction: column; gap: 3px; position: relative; z-index: 1; }
+
+  /* Each card: fixed equal-height layout, 3 columns: number | content | right-panel */
+  .case-card {
+    background: var(--mid);
+    border: 1px solid var(--border);
+    padding: 40px 48px;
+    display: grid;
+    grid-template-columns: 60px 1fr 260px;
+    gap: 40px;
+    align-items: start;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .case-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.3s ease; }
+  .case-card:hover::after { transform: scaleX(1); }
+  .case-card:hover { background: #fff; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+  .case-number { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: #ddd; line-height: 1; }
+  .case-company { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .brand-name {
+    color: #fff;
+    background: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 3px;
+    display: inline-block;
+    letter-spacing: 1px;
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+  }
+  .case-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; margin-bottom: 14px; color: #111; }
+  .case-desc { font-size: 13.5px; line-height: 1.8; color: #111; list-style: disc; padding-left: 20px; }
+  .case-desc li { margin-bottom: 8px; }
+  .case-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #555; border: 1px solid #ccc; padding: 4px 10px; background: #fff; }
+
+  /* Right panel — fixed width, images capped in height, metrics below */
+  .case-right-panel { display: flex; flex-direction: column; gap: 20px; }
+  .case-gallery { display: flex; flex-direction: column; gap: 8px; }
+  .case-gallery img { width: 100%; height: 140px; object-fit: cover; border: 1px solid var(--border); transition: all 0.3s ease; cursor: zoom-in; display: block; }
+  .case-gallery img:hover { border-color: var(--accent); transform: scale(1.01); }
+  .case-gallery.single img { height: 180px; }
+
+  .metrics-row { display: flex; gap: 0; border-top: 1px solid var(--border); padding-top: 16px; }
+  .metric { flex: 1; text-align: center; padding: 0 8px; border-right: 1px solid var(--border); }
+  .metric:last-child { border-right: none; }
+  .metric-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--accent); line-height: 1; }
+  .metric-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-top: 4px; }
+
+  /* TikTok buttons */
+  .tiktok-links { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+  .tiktok-btn { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #111; background: #fff; border: 1px solid #ccc; padding: 8px 14px; text-decoration: none; transition: all 0.2s; cursor: none; }
+  .tiktok-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .tiktok-icon { font-size: 12px; color: var(--accent); }
+
+  /* Outreach proof */
+  .outreach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
+  .outreach-item { background: #fff; border: 1px solid var(--border); padding: 10px 12px; }
+  .outreach-name { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 1px; color: #111; margin-bottom: 3px; text-transform: uppercase; }
+  .outreach-platform { font-size: 10px; color: #888; }
+
+  /* Social links */
+  .social-proof { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .social-link { display: flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: #555; text-decoration: none; border: 1px solid #ccc; padding: 6px 12px; transition: all 0.2s; cursor: none; background: #fff; }
+  .social-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* TIMELINE */
+  .timeline-section { background: var(--mid); }
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: #ddd; }
+  .timeline-item { position: relative; margin-bottom: 48px; padding-left: 32px; }
+  .timeline-item::before { content: ''; position: absolute; left: -37px; top: 6px; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
+  .timeline-date { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; text-transform: uppercase; }
+  .timeline-role { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; margin-bottom: 4px; color: #111; }
+  .timeline-company { font-size: 13px; color: #888; margin-bottom: 12px; }
+  .timeline-desc { font-size: 13px; line-height: 1.8; color: #555; max-width: 560px; list-style: disc; padding-left: 20px; }
+  .timeline-desc li { margin-bottom: 8px; }
+
+  /* CONTACT */
+  .contact { background: #111; text-align: center; position: relative; overflow: hidden; }
+  .contact-bg { position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 200px; color: #1a1a1a; top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; user-select: none; letter-spacing: -8px; }
+  .contact-inner { position: relative; z-index: 1; }
+  .contact-email { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 4vw, 52px); letter-spacing: 2px; color: #fff; text-decoration: none; display: block; margin-bottom: 48px; transition: color 0.2s; }
+  .contact-email:hover { color: var(--accent); }
+  .contact-links { display: flex; justify-content: center; gap: 32px; }
+  .contact-link { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #888; text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 8px; }
+  .contact-link::before { content: '→'; color: var(--accent); }
+  .contact-link:hover { color: #fff; }
+  .section-title-contact { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: 1px; margin-bottom: 40px; color: #fff; }
+  .section-title-contact .outline { -webkit-text-stroke: 2px var(--accent); color: transparent; }
+  .section-label-contact { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; justify-content: center; display: flex; }
+
+  .video-link { display: inline-flex; align-items: center; gap: 12px; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px; text-transform: uppercase; color: #fff; background: var(--accent); padding: 16px 32px; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s ease; font-weight: 700; }
+  .video-link:hover { background: #e63d0f; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(255, 77, 28, 0.3); }
+
+  .footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; background: #fff; }
+  .footer-copy { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: #aaa; }
+
+  .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* Lightbox */
+  .lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.95); z-index: 10000; align-items: center; justify-content: center; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+  .lightbox-close { position: absolute; top: 24px; right: 32px; font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #fff; cursor: pointer; }
+
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 24px; padding-top: 100px; }
+    .hero-right { display: none; }
+    section { padding: 64px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .case-card { grid-template-columns: 1fr; gap: 24px; }
+    .case-number { display: none; }
+    .outreach-grid { grid-template-columns: repeat(2,1fr); }
+    .footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="lightbox" id="lightbox"><span class="lightbox-close" id="lbClose">✕</span><img id="lbImg" src="" alt=""></div>
+
+<nav>
+  <div class="nav-logo">SK<span>.</span></div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-accent-line"></div>
+    <div class="hero-tag">Marketing Portfolio 2026</div>
+    <h1 class="hero-name">SAMEER<br><span class="outline">KHAN</span></h1>
+    <p class="hero-desc">Creative and data-driven marketing professional with 2+ years delivering integrated campaigns across diverse brands and markets. Skilled in campaign strategy, content creation, brand management, and performance marketing. MSc Marketing combined with a BSc in Computer Applications — a rare blend of strategic thinking and technical fluency. </p>
+    <h2 class="hero-subtitle"><strong>Marketing Executive</strong></h2>
+    <div class="hero-cta">
+      <a href="#work" class="btn-primary">View Work</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-card"><div class="stat-number">1M<span>+</span></div><div class="stat-label">Impressions Delivered</div></div>
+    <div class="stat-card"><div class="stat-number">20<span>+</span></div><div class="stat-label">Campaigns / Month</div></div>
+    <div class="stat-card"><div class="stat-number">5<span>+</span></div><div class="stat-label">Brands Managed</div></div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="section-label">Selected Work</div>
+  <h2 class="section-title">CASE <span class="outline">STUDIES</span></h2>
+  <div class="case-studies">
+
+    <!-- ICICI -->
+    <div class="case-card fade-in">
+      <div class="case-number">01</div>
+      <div>
+        <div class="case-company"><span class="brand-name">ICICI Prudential Life Insurance</span> · Mumbai</div>
+        <div class="case-title">Seasonal Campaign Strategy & Execution</div>
+        <p class="case-desc">Developed and executed a series of seasonal social media campaigns aligned with key cultural moments. Created content calendar strategy and conducted market analysis that informed campaign direction. Delivered integrated campaigns across multiple platforms with strong performance metrics.</p>
+        <div class="case-tags"><span class="tag">Festive Campaigns</span><span class="tag">Content Strategy</span><span class="tag">Canva</span><span class="tag">Instagram</span><span class="tag">Facebook</span></div>
+      </div>
+      <div class="case-right-panel">
+        <div class="case-gallery">
+          <img src="icici_baisakhi.jpg" alt="ICICI Baisakhi Campaign" onclick="openLightbox(this.src)">
+          <img src="icici_vishu.jpg" alt="ICICI Vishu Campaign" onclick="openLightbox(this.src)">
+        </div>
+        <div class="metrics-row">
+          <div class="metric"><div class="metric-value">500K+</div><div class="metric-label">Impressions</div></div>
+          <div class="metric"><div class="metric-value">↑34%</div><div class="metric-label">Engagement</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Harmonia -->
+    <div class="case-card fade-in">
+      <div class="case-number">02</div>
+      <div>
+        <div class="case-company"><span class="brand-name">Harmonia Productions</span> · Brighton, UK</div>
+        <div class="case-title">Social Growth & Launch Campaigns</div>
+        <p class="case-desc">Produced TikTok content from scratch, establishing a strong creative presence on the platform. Conducted competitor analysis across emerging artists to inform strategy. Executed festival outreach and booking coordination that resulted in multiple live performance opportunities. Revamped existing web presence to better showcase work and drive audience engagement.</p>
+        <div class="case-tags"><span class="tag">TikTok</span><span class="tag">Instagram</span><span class="tag">Spotify Outreach</span><span class="tag">Artist Marketing</span><span class="tag">Short-Form Video</span></div>
+        <div class="tiktok-links">
+          <a href="https://vt.tiktok.com/ZSxBP8aL1/" target="_blank" class="tiktok-btn"><span class="tiktok-icon">▶</span> Watch TikTok — Track 1</a>
+          <a href="https://vt.tiktok.com/ZSxBPNdsp/" target="_blank" class="tiktok-btn"><span class="tiktok-icon">▶</span> Watch TikTok — Track 2</a>
+        </div>
+        <div class="social-proof" style="margin-top:16px;">
+          <a href="https://www.instagram.com/mick.world?igsh=N3dyMm5oajJ4ZmY2" target="_blank" class="social-link">↗ @mick.world</a>
+        </div>
+        <div style="margin-top:20px;">
+          <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:10px;">Spotify Playlist Outreach — Sample Targets</p>
+          <div class="outreach-grid">
+            <div class="outreach-item"><div class="outreach-name">Country Music King</div><div class="outreach-platform">Instagram + Spotify</div></div>
+            <div class="outreach-item"><div class="outreach-name">Indie Folk Central</div><div class="outreach-platform">Instagram + Spotify</div></div>
+            <div class="outreach-item"><div class="outreach-name">The Hubb UK</div><div class="outreach-platform">Instagram + Spotify</div></div>
+            <div class="outreach-item"><div class="outreach-name">Sound of Brit</div><div class="outreach-platform">Instagram + Email</div></div>
+            <div class="outreach-item"><div class="outreach-name">Songs for a Cowboy</div><div class="outreach-platform">Instagram + Spotify</div></div>
+            <div class="outreach-item"><div class="outreach-name">+7 more curators</div><div class="outreach-platform">Multi-platform</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="case-right-panel">
+        <div class="case-gallery single">
+          <img src="Mick n Phil Mouth Harp.JPG" alt="Michael Wynne performing" onclick="openLightbox(this.src)">
+        </div>
+        <div class="metrics-row">
+          <div class="metric"><div class="metric-value">+2K</div><div class="metric-label">Followers</div></div>
+          <div class="metric"><div class="metric-value">44%</div><div class="metric-label">Growth</div></div>
+          <div class="metric"><div class="metric-value">12+</div><div class="metric-label">Curators</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Regina -->
+    <div class="case-card fade-in">
+      <div class="case-number">03</div>
+      <div>
+        <div class="case-company"><span class="brand-name">Transform Your Performance</span> · Remote</div>
+        <div class="case-title">Brand Building & Growth Strategy</div>
+        <p class="case-desc">Developed and launched comprehensive social media brand strategy from the ground up. Created content library including testimonials and brand storytelling. Executed targeted campaigns that drove significant audience growth and measurable business results through strategic platform management.</p>
+        <div class="case-tags"><span class="tag">Instagram Reels</span><span class="tag">Story Content</span><span class="tag">Paid Promotions</span><span class="tag">Outreach</span><span class="tag">Personal Branding</span></div>
+        <div class="social-proof" style="margin-top:16px;">
+          <a href="https://www.instagram.com/reginahubernyclyon?igsh=Z3ljZjJ0MDczbDBn" target="_blank" class="social-link">↗ @reginahubernyclon</a>
+        </div>
+      </div>
+      <div class="case-right-panel">
+        <div class="case-gallery">
+          <img src="regina_testimonials.jpg" alt="Regina Testimonials Post" onclick="openLightbox(this.src)">
+          <img src="regina_whoami.jpg" alt="Regina Who Am I Story" onclick="openLightbox(this.src)">
+        </div>
+        <div class="metrics-row">
+          <div class="metric"><div class="metric-value">5x</div><div class="metric-label">Follower Growth</div></div>
+          <div class="metric"><div class="metric-value">2</div><div class="metric-label">Clients Acquired</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gordon's Chemists -->
+    <div class="case-card fade-in">
+      <div class="case-number">04</div>
+      <div>
+        <div class="case-company"><span class="brand-name">Gordon's Chemists</span> · Dublin, Ireland</div>
+        <div class="case-title">Product Video & Brand Content</div>
+        <p class="case-desc">Produced high-quality video content showcasing brand products and services. Developed compelling visual narratives that communicate value and build brand connection with target audience. Created engaging content tailored for social media distribution and brand promotion.</p>
+        <div class="case-tags"><span class="tag">Video Production</span><span class="tag">Brand Content</span><span class="tag">Social Media</span><span class="tag">Storytelling</span></div>
+        <div class="social-proof" style="margin-top:16px;">
+          <a href="https://drive.google.com/file/d/1nag5Q3OAOG5GxpqXWTKFxpBGwclAhxEP/view?usp=sharing" class="video-link" target="_blank">▶ Watch Video</a>
+        </div>
+      </div>
+      <div class="case-right-panel">
+        <div class="metrics-row">
+          <div class="metric"><div class="metric-value">1</div><div class="metric-label">Video Campaign</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title">THE <span class="outline">PERSON</span></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>marketing professional</strong> who bridges the gap between creative instinct and analytical precision. My background spans integrated campaign delivery, brand stewardship, content creation, and performance marketing — across industries as varied as financial services, aerospace, and independent music.</p>
+      <p>Before marketing, I competed in <strong>professional esports</strong> — an experience that sharpened my ability to read data fast, stay composed under pressure, and relentlessly optimise for the win. I carry that same mindset into every campaign I run.</p>
+      <p>I hold an <strong>MSc in Marketing (Distinction)</strong> from the University of Liverpool and a BSc in Computer Applications — giving me an unusual mix of strategic marketing thinking and technical fluency.</p>
+    </div>
+    <div class="about-skills">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:24px;">Core Competencies</div>
+      <div class="skill-item"><div class="skill-name"><span>TikTok & Short-Form Video</span><span style="color:var(--accent)">92%</span></div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
+      <div class="skill-item"><div class="skill-name"><span>Integrated Campaign Delivery</span><span style="color:var(--accent)">95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+      <div class="skill-item"><div class="skill-name"><span>Brand Stewardship</span><span style="color:var(--accent)">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-item"><div class="skill-name"><span>Social Media & Content</span><span style="color:var(--accent)">93%</span></div><div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div></div>
+      <div class="skill-item"><div class="skill-name"><span>Data & Performance Analysis</span><span style="color:var(--accent)">82%</span></div><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+      <div class="skill-item"><div class="skill-name"><span>Stakeholder Management</span><span style="color:var(--accent)">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+      <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:8px;">
+        <span class="tag" style="color:var(--white);border-color:#333">HubSpot</span>
+        <span class="tag" style="color:var(--white);border-color:#333">Canva</span>
+        <span class="tag" style="color:var(--white);border-color:#333">Figma</span>
+        <span class="tag" style="color:var(--white);border-color:#333">Meta Ads</span>
+        <span class="tag" style="color:var(--white);border-color:#333">LinkedIn Ads</span>
+        <span class="tag" style="color:var(--white);border-color:#333">SQL</span>
+        <span class="tag" style="color:var(--white);border-color:#333">Python</span>
+        <span class="tag" style="color:var(--white);border-color:#333">Notion</span>
+        <span class="tag" style="color:var(--white);border-color:#333">Email Marketing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section" id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">THE <span class="outline">JOURNEY</span></h2>
+  <div class="timeline">
+    <div class="timeline-item fade-in"><div class="timeline-date">Aug 2025 — Present</div><div class="timeline-role">Senior Marketing Executive</div><div class="timeline-company">Mphasis · Bengaluru, India </div><ul class="timeline-desc"><li>Leading multi-channel integrated campaign delivery across EU, Middle Eastern, and US markets</li><li>Managing briefs, creative reviews, stakeholder approvals, and performance optimisation at scale</li><li>Generating 1M+ monthly impressions across priority markets</li></ul></div>
+    <div class="timeline-item fade-in"><div class="timeline-date">Jun 2025 — Aug 2025</div><div class="timeline-role">Digital Content Intern</div><div class="timeline-company">Airbus · Bengaluru, India</div><ul class="timeline-desc"><li>Developed marketing and communications materials for innovation campaigns</li><li>Built a branded digital content hub to centralise innovation updates</li><li>Drove internal engagement and awareness across teams</li></ul></div>
+    <div class="timeline-item fade-in"><div class="timeline-date">Jan 2025 — May 2025</div><div class="timeline-role">Social Media Marketing Intern</div><div class="timeline-company">ICICI Prudential Life Insurance · Mumbai</div><ul class="timeline-desc"><li>Led festive campaign series and competitor analysis</li><li>Built a 3-month content calendar strategy</li><li>Drove 500K+ monthly impressions across Instagram, LinkedIn & Facebook</li></ul></div>
+    <div class="timeline-item fade-in"><div class="timeline-date">Sep 2024 — Apr 2025</div><div class="timeline-role">Digital Marketing Intern (Freelance)</div><div class="timeline-company">Harmonia Productions · Brighton, UK</div><ul class="timeline-desc"><li>Grew social following by 44% across a year-long engagement</li><li>Owned content creation and platform strategy</li><li>Ran multi-channel outreach campaigns to key partners and influencers</li></ul></div>
+    <div class="timeline-item fade-in"><div class="timeline-date">Jan 2025 — Apr 2025</div><div class="timeline-role">Social Media & Campaign Executive (Freelance)</div><div class="timeline-company">Transform Your Performance · Remote</div><ul class="timeline-desc"><li>Grew Instagram presence 5x from scratch</li><li>Produced content including Reels, stories, and branded materials</li><li>Executed paid promotions and targeted outreach campaigns</li><li>Delivered measurable business results through strategic management</li></ul></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-bg">HELLO</div>
+  <div class="contact-inner">
+    <div class="section-label-contact">Get In Touch</div>
+    <h2 class="section-title-contact">LET'S <span class="outline">WORK</span></h2>
+    <a href="mailto:sxmeerkhxn@gmail.com" class="contact-email">sxmeerkhxn@gmail.com</a>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/sameerkhxn/" class="contact-link" target="_blank">LinkedIn</a>
+      <a href="tel:+447818270453" class="contact-link">+44 7818 270453</a>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="footer-copy">© 2025 Sameer Khan. All rights reserved.</div>
+  <div style="font-family:'DM Mono',monospace;font-size:10px;color:#333;">Marketing Portfolio · London, UK</div>
+</div>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx - 6 + 'px';
+    cursor.style.top = my - 6 + 'px';
+  });
+  function animateRing() {
+    rx += (mx - rx - 18) * 0.12;
+    ry += (my - ry - 18) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function openLightbox(src) {
+    document.getElementById('lbImg').src = src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  document.getElementById('lbClose').onclick = () => document.getElementById('lightbox').classList.remove('active');
+  document.getElementById('lightbox').onclick = (e) => { if (e.target === e.currentTarget) e.currentTarget.classList.remove('active'); };
+</script>
+</body>
+</html>
