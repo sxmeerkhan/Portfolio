@@ -7,130 +7,155 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #0a0a0a;
-    --white: #f5f2ee;
-    --cream: #ede9e3;
+    --black: #ffffff;
+    --white: #111111;
+    --cream: #f5f5f5;
     --accent: #ff4d1c;
-    --accent2: #ffd60a;
-    --mid: #1a1a1a;
-    --grey: #888;
+    --accent2: #ff4d1c;
+    --mid: #f7f4f0;
+    --grey: #666666;
+    --border: #e0ddd8;
+    --card-bg: #ffffff;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; cursor: none; }
 
-  .cursor { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; mix-blend-mode: difference; }
-  .cursor-ring { width: 36px; height: 36px; border: 1px solid var(--accent); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transition: all 0.08s ease; mix-blend-mode: difference; }
+  .cursor { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; }
+  .cursor-ring { width: 36px; height: 36px; border: 1px solid var(--accent); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transition: all 0.08s ease; }
 
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 24px 48px; background: rgba(10,10,10,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e1e; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 24px 48px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
   .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; color: var(--white); }
   .nav-logo span { color: var(--accent); }
   .nav-links { display: flex; gap: 36px; }
   .nav-links a { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--accent); }
 
-  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding: 0 48px; padding-top: 100px; position: relative; overflow: hidden; }
-  .hero-bg-text { position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: clamp(120px, 18vw, 260px); color: #111; top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; z-index: 0; user-select: none; letter-spacing: -4px; }
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding: 0 48px; padding-top: 100px; position: relative; overflow: hidden; background: #fff; }
+  .hero-bg-text { position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: clamp(120px, 18vw, 260px); color: #f0ece6; top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; z-index: 0; user-select: none; letter-spacing: -4px; }
   .hero-left { display: flex; flex-direction: column; justify-content: center; z-index: 1; padding: 60px 0; }
   .hero-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
   .hero-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); }
-  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 8vw, 110px); line-height: 0.92; letter-spacing: -1px; margin-bottom: 32px; }
-  .hero-name .outline { -webkit-text-stroke: 1px var(--white); color: transparent; }
-  .hero-desc { font-size: 15px; line-height: 1.8; color: #aaa; max-width: 420px; margin-bottom: 48px; }
-  .hero-desc strong { color: var(--white); font-weight: 500; }
+  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 8vw, 110px); line-height: 0.92; letter-spacing: -1px; margin-bottom: 32px; color: #111; }
+  .hero-name .outline { -webkit-text-stroke: 2px var(--accent); color: transparent; }
+  .hero-desc { font-size: 15px; line-height: 1.8; color: #555; max-width: 420px; margin-bottom: 48px; }
+  .hero-desc strong { color: #111; font-weight: 600; }
   .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
-  .btn-primary { background: var(--accent); color: var(--white); padding: 14px 32px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: none; cursor: none; transition: all 0.2s; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
+  .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: none; cursor: none; transition: all 0.2s; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
   .btn-primary:hover { background: #e63d0f; transform: translateY(-2px); }
-  .btn-outline { background: transparent; color: var(--white); padding: 14px 32px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 1px solid #333; cursor: none; transition: all 0.2s; }
-  .btn-outline:hover { border-color: var(--white); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: #111; padding: 14px 32px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 2px solid #111; cursor: none; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
   .hero-right { display: flex; flex-direction: column; justify-content: center; align-items: flex-end; z-index: 1; gap: 16px; }
-  .stat-card { background: var(--mid); border: 1px solid #222; padding: 24px 32px; width: 240px; position: relative; overflow: hidden; animation: fadeUp 0.6s ease both; }
+  .stat-card { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 24px 32px; width: 240px; position: relative; overflow: hidden; animation: fadeUp 0.6s ease both; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
   .stat-card:nth-child(2) { animation-delay: 0.1s; margin-right: 32px; }
   .stat-card:nth-child(3) { animation-delay: 0.2s; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  .stat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); }
-  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--white); line-height: 1; margin-bottom: 4px; }
+  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: #111; line-height: 1; margin-bottom: 4px; }
   .stat-number span { color: var(--accent); }
   .stat-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); }
 
   section { padding: 100px 48px; }
   .section-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: #1e1e1e; max-width: 80px; }
-  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: 1px; margin-bottom: 64px; }
-  .section-title .outline { -webkit-text-stroke: 1px var(--white); color: transparent; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 80px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: 1px; margin-bottom: 64px; color: #111; }
+  .section-title .outline { -webkit-text-stroke: 2px var(--accent); color: transparent; }
 
+  /* ABOUT */
   .about { background: var(--mid); }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .about-text p { font-size: 15px; line-height: 1.9; color: #aaa; margin-bottom: 20px; }
-  .about-text p strong { color: var(--white); font-weight: 500; }
+  .about-text p { font-size: 15px; line-height: 1.9; color: #555; margin-bottom: 20px; }
+  .about-text p strong { color: #111; font-weight: 600; }
   .about-skills { display: flex; flex-direction: column; gap: 16px; }
   .skill-item { display: flex; flex-direction: column; gap: 8px; }
-  .skill-name { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px; display: flex; justify-content: space-between; color: var(--white); }
-  .skill-bar { height: 2px; background: #2a2a2a; position: relative; overflow: hidden; }
+  .skill-name { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px; display: flex; justify-content: space-between; color: #111; }
+  .skill-bar { height: 2px; background: #ddd; position: relative; overflow: hidden; }
   .skill-fill { height: 100%; background: var(--accent); animation: fillBar 1.2s ease both; animation-delay: 0.3s; }
   @keyframes fillBar { from { width: 0; } }
 
-  .work { background: var(--black); }
-  .case-studies { display: flex; flex-direction: column; gap: 2px; }
-  .case-card { background: var(--mid); border: 1px solid #1a1a1a; padding: 48px; display: grid; grid-template-columns: 80px 1fr 220px; gap: 40px; align-items: start; transition: all 0.3s; position: relative; overflow: hidden; }
-  .case-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform: scaleX(0); transition: transform 0.3s ease; }
+  /* CASE STUDIES */
+  .work { background: #fff; }
+  .case-studies { display: flex; flex-direction: column; gap: 3px; }
+
+  /* Each card: fixed equal-height layout, 3 columns: number | content | right-panel */
+  .case-card {
+    background: var(--mid);
+    border: 1px solid var(--border);
+    padding: 40px 48px;
+    display: grid;
+    grid-template-columns: 60px 1fr 260px;
+    gap: 40px;
+    align-items: start;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .case-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.3s ease; }
   .case-card:hover::after { transform: scaleX(1); }
-  .case-card:hover { background: #141414; }
-  .case-number { font-family: 'Bebas Neue', sans-serif; font-size: 64px; color: #1e1e1e; line-height: 1; }
-  .case-company { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-  .case-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; margin-bottom: 16px; }
-  .case-desc { font-size: 14px; line-height: 1.8; color: #888; }
-  .case-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-  .tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--grey); border: 1px solid #2a2a2a; padding: 4px 10px; }
+  .case-card:hover { background: #fff; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+  .case-number { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: #ddd; line-height: 1; }
+  .case-company { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .case-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; margin-bottom: 14px; color: #111; }
+  .case-desc { font-size: 13.5px; line-height: 1.8; color: #111; }
+  .case-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #555; border: 1px solid #ccc; padding: 4px 10px; background: #fff; }
 
-  /* Work samples gallery */
-  .case-gallery { display: flex; flex-direction: column; gap: 12px; }
-  .case-gallery img { width: 100%; border: 1px solid #222; object-fit: cover; transition: transform 0.3s ease; cursor: zoom-in; }
-  .case-gallery img:hover { transform: scale(1.02); border-color: var(--accent); }
-  .case-metrics { display: flex; flex-direction: column; gap: 20px; }
-  .metric { text-align: right; }
-  .metric-value { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--accent2); line-height: 1; }
-  .metric-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); margin-top: 2px; }
+  /* Right panel — fixed width, images capped in height, metrics below */
+  .case-right-panel { display: flex; flex-direction: column; gap: 20px; }
+  .case-gallery { display: flex; flex-direction: column; gap: 8px; }
+  .case-gallery img { width: 100%; height: 140px; object-fit: cover; border: 1px solid var(--border); transition: all 0.3s ease; cursor: zoom-in; display: block; }
+  .case-gallery img:hover { border-color: var(--accent); transform: scale(1.01); }
+  .case-gallery.single img { height: 180px; }
 
-  /* TikTok link buttons */
-  .tiktok-links { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
-  .tiktok-btn { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--white); background: #1a1a1a; border: 1px solid #333; padding: 8px 14px; text-decoration: none; transition: all 0.2s; cursor: none; }
+  .metrics-row { display: flex; gap: 0; border-top: 1px solid var(--border); padding-top: 16px; }
+  .metric { flex: 1; text-align: center; padding: 0 8px; border-right: 1px solid var(--border); }
+  .metric:last-child { border-right: none; }
+  .metric-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--accent); line-height: 1; }
+  .metric-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-top: 4px; }
+
+  /* TikTok buttons */
+  .tiktok-links { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+  .tiktok-btn { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #111; background: #fff; border: 1px solid #ccc; padding: 8px 14px; text-decoration: none; transition: all 0.2s; cursor: none; }
   .tiktok-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .tiktok-icon { font-size: 14px; }
+  .tiktok-icon { font-size: 12px; color: var(--accent); }
 
   /* Outreach proof */
-  .outreach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
-  .outreach-item { background: #111; border: 1px solid #1e1e1e; padding: 12px 16px; }
-  .outreach-name { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: var(--white); margin-bottom: 4px; }
-  .outreach-platform { font-size: 11px; color: var(--grey); }
+  .outreach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
+  .outreach-item { background: #fff; border: 1px solid var(--border); padding: 10px 12px; }
+  .outreach-name { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 1px; color: #111; margin-bottom: 3px; text-transform: uppercase; }
+  .outreach-platform { font-size: 10px; color: #888; }
 
-  /* Instagram links */
-  .social-proof { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
-  .social-link { display: flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: var(--grey); text-decoration: none; border: 1px solid #222; padding: 6px 12px; transition: all 0.2s; cursor: none; }
+  /* Social links */
+  .social-proof { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .social-link { display: flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: #555; text-decoration: none; border: 1px solid #ccc; padding: 6px 12px; transition: all 0.2s; cursor: none; background: #fff; }
   .social-link:hover { color: var(--accent); border-color: var(--accent); }
 
+  /* TIMELINE */
   .timeline-section { background: var(--mid); }
   .timeline { position: relative; padding-left: 32px; }
-  .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: #222; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: #ddd; }
   .timeline-item { position: relative; margin-bottom: 48px; padding-left: 32px; }
   .timeline-item::before { content: ''; position: absolute; left: -37px; top: 6px; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
   .timeline-date { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; text-transform: uppercase; }
-  .timeline-role { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; margin-bottom: 4px; }
-  .timeline-company { font-size: 13px; color: var(--grey); margin-bottom: 12px; }
-  .timeline-desc { font-size: 13px; line-height: 1.8; color: #777; max-width: 560px; }
+  .timeline-role { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; margin-bottom: 4px; color: #111; }
+  .timeline-company { font-size: 13px; color: #888; margin-bottom: 12px; }
+  .timeline-desc { font-size: 13px; line-height: 1.8; color: #555; max-width: 560px; }
 
-  .contact { background: var(--black); text-align: center; position: relative; overflow: hidden; }
-  .contact-bg { position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 200px; color: #0d0d0d; top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; user-select: none; letter-spacing: -8px; }
+  /* CONTACT */
+  .contact { background: #111; text-align: center; position: relative; overflow: hidden; }
+  .contact-bg { position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 200px; color: #1a1a1a; top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; user-select: none; letter-spacing: -8px; }
   .contact-inner { position: relative; z-index: 1; }
-  .contact-email { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 4vw, 52px); letter-spacing: 2px; color: var(--white); text-decoration: none; display: block; margin-bottom: 48px; transition: color 0.2s; }
+  .contact-email { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 4vw, 52px); letter-spacing: 2px; color: #fff; text-decoration: none; display: block; margin-bottom: 48px; transition: color 0.2s; }
   .contact-email:hover { color: var(--accent); }
   .contact-links { display: flex; justify-content: center; gap: 32px; }
-  .contact-link { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 8px; }
+  .contact-link { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #888; text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 8px; }
   .contact-link::before { content: '→'; color: var(--accent); }
-  .contact-link:hover { color: var(--white); }
+  .contact-link:hover { color: #fff; }
+  .section-title-contact { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: 1px; margin-bottom: 40px; color: #fff; }
+  .section-title-contact .outline { -webkit-text-stroke: 2px var(--accent); color: transparent; }
+  .section-label-contact { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; justify-content: center; display: flex; }
 
-  .footer { border-top: 1px solid #1a1a1a; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; }
-  .footer-copy { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: #444; }
+  .footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; background: #fff; }
+  .footer-copy { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: #aaa; }
 
   .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -139,7 +164,7 @@
   .lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.95); z-index: 10000; align-items: center; justify-content: center; }
   .lightbox.active { display: flex; }
   .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
-  .lightbox-close { position: absolute; top: 24px; right: 32px; font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--white); cursor: pointer; }
+  .lightbox-close { position: absolute; top: 24px; right: 32px; font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #fff; cursor: pointer; }
 
   @media (max-width: 900px) {
     nav { padding: 20px 24px; }
@@ -208,13 +233,13 @@
           <a href="https://linkedin.com" class="social-link" target="_blank">↗ LinkedIn Page</a>
         </div>
       </div>
-      <div>
-        <div class="case-gallery">
+      <div class="case-right-panel">
+        <div class="case-gallery single">
           <img src="mphasis_post.png" alt="Mphasis LinkedIn post" onclick="openLightbox(this.src)">
         </div>
-        <div style="margin-top:20px;">
+        <div class="metrics-row">
           <div class="metric"><div class="metric-value">1M+</div><div class="metric-label">Monthly Impressions</div></div>
-          <div class="metric" style="margin-top:16px;"><div class="metric-value">20+</div><div class="metric-label">Campaigns / Month</div></div>
+          <div class="metric"><div class="metric-value">20+</div><div class="metric-label">Campaigns / Mo</div></div>
         </div>
       </div>
     </div>
@@ -228,14 +253,14 @@
         <p class="case-desc">Created a series of festive social media campaigns for one of India's largest life insurance brands, connecting product messaging with cultural moments including Baisakhi and Vishu. Developed a 3-month content calendar and conducted competitor analysis that directly shaped Q2 strategy.</p>
         <div class="case-tags"><span class="tag">Festive Campaigns</span><span class="tag">Content Strategy</span><span class="tag">Canva</span><span class="tag">Instagram</span><span class="tag">Facebook</span></div>
       </div>
-      <div>
+      <div class="case-right-panel">
         <div class="case-gallery">
           <img src="icici_baisakhi.jpg" alt="ICICI Baisakhi Campaign" onclick="openLightbox(this.src)">
           <img src="icici_vishu.jpg" alt="ICICI Vishu Campaign" onclick="openLightbox(this.src)">
         </div>
-        <div style="margin-top:20px;">
-          <div class="metric"><div class="metric-value">500K+</div><div class="metric-label">Monthly Impressions</div></div>
-          <div class="metric" style="margin-top:16px;"><div class="metric-value">↑34%</div><div class="metric-label">Engagement Rate</div></div>
+        <div class="metrics-row">
+          <div class="metric"><div class="metric-value">500K+</div><div class="metric-label">Impressions</div></div>
+          <div class="metric"><div class="metric-value">↑34%</div><div class="metric-label">Engagement</div></div>
         </div>
       </div>
     </div>
@@ -267,10 +292,12 @@
           </div>
         </div>
       </div>
-      <div>
-        <div class="metric"><div class="metric-value">+2K</div><div class="metric-label">Followers Gained</div></div>
-        <div class="metric" style="margin-top:16px;"><div class="metric-value">44%</div><div class="metric-label">Follower Growth</div></div>
-        <div class="metric" style="margin-top:16px;"><div class="metric-value">12+</div><div class="metric-label">Playlist Curators Reached</div></div>
+      <div class="case-right-panel">
+        <div class="metrics-row">
+          <div class="metric"><div class="metric-value">+2K</div><div class="metric-label">Followers</div></div>
+          <div class="metric"><div class="metric-value">44%</div><div class="metric-label">Growth</div></div>
+          <div class="metric"><div class="metric-value">12+</div><div class="metric-label">Curators</div></div>
+        </div>
       </div>
     </div>
 
@@ -286,14 +313,14 @@
           <a href="https://www.instagram.com/reginahubernyclyon?igsh=Z3ljZjJ0MDczbDBn" target="_blank" class="social-link">↗ @reginahubernyclon</a>
         </div>
       </div>
-      <div>
+      <div class="case-right-panel">
         <div class="case-gallery">
           <img src="regina_testimonials.jpg" alt="Regina Testimonials Post" onclick="openLightbox(this.src)">
           <img src="regina_whoami.jpg" alt="Regina Who Am I Story" onclick="openLightbox(this.src)">
         </div>
-        <div style="margin-top:20px;">
+        <div class="metrics-row">
           <div class="metric"><div class="metric-value">5x</div><div class="metric-label">Follower Growth</div></div>
-          <div class="metric" style="margin-top:16px;"><div class="metric-value">2</div><div class="metric-label">Clients Acquired</div></div>
+          <div class="metric"><div class="metric-value">2</div><div class="metric-label">Clients Acquired</div></div>
         </div>
       </div>
     </div>
@@ -351,8 +378,8 @@
 <section class="contact" id="contact">
   <div class="contact-bg">HELLO</div>
   <div class="contact-inner">
-    <div class="section-label" style="justify-content:center;margin-bottom:24px;">Get In Touch</div>
-    <h2 class="section-title" style="margin-bottom:40px;">LET'S <span class="outline">WORK</span></h2>
+    <div class="section-label-contact">Get In Touch</div>
+    <h2 class="section-title-contact">LET'S <span class="outline">WORK</span></h2>
     <a href="mailto:sxmeerkhxn@gmail.com" class="contact-email">sxmeerkhxn@gmail.com</a>
     <div class="contact-links">
       <a href="https://linkedin.com" class="contact-link" target="_blank">LinkedIn</a>
