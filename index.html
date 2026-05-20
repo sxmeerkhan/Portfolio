@@ -32,6 +32,8 @@
   .nav-links a:hover { color: var(--accent); }
 
   .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding: 0 48px; padding-top: 100px; position: relative; overflow: hidden; background: #fff; }
+  .hero::before { content: ''; position: absolute; top: -10%; right: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255, 77, 28, 0.04) 0%, transparent 70%); border-radius: 50%; z-index: 0; }
+  .hero::after { content: ''; position: absolute; bottom: -15%; left: 10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255, 77, 28, 0.03) 0%, transparent 70%); border-radius: 50%; z-index: 0; }
   .hero-bg-text { position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: clamp(120px, 18vw, 260px); color: #f0ece6; top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; z-index: 0; user-select: none; letter-spacing: -4px; }
   .hero-left { display: flex; flex-direction: column; justify-content: center; z-index: 1; padding: 60px 0; position: relative; }
   .hero-accent-line { position: absolute; top: 0; left: 0; width: 4px; height: 60px; background: linear-gradient(to bottom, var(--accent), transparent); animation: slideDown 0.8s ease-out; }
@@ -67,8 +69,10 @@
   .section-title .outline { -webkit-text-stroke: 2px var(--accent); color: transparent; }
 
   /* ABOUT */
-  .about { background: var(--mid); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .about { background: var(--mid); position: relative; }
+  .about::before { content: ''; position: absolute; top: -10%; right: 5%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255, 77, 28, 0.03) 0%, transparent 70%); border-radius: 50%; z-index: 0; pointer-events: none; }
+  .about::after { content: ''; position: absolute; bottom: 5%; left: -3%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 77, 28, 0.02) 0%, transparent 70%); border-radius: 50%; z-index: 0; pointer-events: none; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; position: relative; z-index: 1; }
   .about-text p { font-size: 15px; line-height: 1.9; color: #555; margin-bottom: 20px; }
   .about-text p strong { color: #111; font-weight: 600; }
   .about-skills { display: flex; flex-direction: column; gap: 16px; }
@@ -79,8 +83,10 @@
   @keyframes fillBar { from { width: 0; } }
 
   /* CASE STUDIES */
-  .work { background: #fff; }
-  .case-studies { display: flex; flex-direction: column; gap: 3px; }
+  .work { background: #fff; position: relative; }
+  .work::before { content: ''; position: absolute; top: 20%; left: -5%; width: 350px; height: 350px; background: radial-gradient(circle, rgba(255, 77, 28, 0.02) 0%, transparent 70%); border-radius: 50%; z-index: 0; pointer-events: none; }
+  .work::after { content: ''; position: absolute; bottom: 10%; right: -3%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 77, 28, 0.02) 0%, transparent 70%); border-radius: 50%; z-index: 0; pointer-events: none; }
+  .case-studies { display: flex; flex-direction: column; gap: 3px; position: relative; z-index: 1; }
 
   /* Each card: fixed equal-height layout, 3 columns: number | content | right-panel */
   .case-card {
@@ -290,10 +296,6 @@
         </div>
       </div>
       <div class="case-right-panel">
-        <div class="case-gallery">
-          <img src="Mick n Phil Mouth Harp.jpg" alt="Harmonia Productions Artist" onclick="openLightbox(this.src)">
-          <img src="festival-performance.jpg" alt="Festival Performance" onclick="openLightbox(this.src)">
-        </div>
         <div class="metrics-row">
           <div class="metric"><div class="metric-value">+2K</div><div class="metric-label">Followers</div></div>
           <div class="metric"><div class="metric-value">44%</div><div class="metric-label">Growth</div></div>
@@ -322,6 +324,25 @@
         <div class="metrics-row">
           <div class="metric"><div class="metric-value">5x</div><div class="metric-label">Follower Growth</div></div>
           <div class="metric"><div class="metric-value">2</div><div class="metric-label">Clients Acquired</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gordon's Chemists -->
+    <div class="case-card fade-in">
+      <div class="case-number">04</div>
+      <div>
+        <div class="case-company"><span class="brand-name">Gordon's Chemists</span> · Dublin, Ireland</div>
+        <div class="case-title">Product Video & Brand Content</div>
+        <p class="case-desc">Produced high-quality video content showcasing brand products and services. Developed compelling visual narratives that communicate value and build brand connection with target audience. Created engaging content tailored for social media distribution and brand promotion.</p>
+        <div class="case-tags"><span class="tag">Video Production</span><span class="tag">Brand Content</span><span class="tag">Social Media</span><span class="tag">Storytelling</span></div>
+        <div class="social-proof" style="margin-top:16px;">
+          <a href="https://drive.google.com/file/d/1nag5Q3OAOG5GxpqXWTKFxpBGwclAhxEP/view?usp=sharing" class="contact-link" target="_blank" style="border: 1px solid #ccc; padding: 8px 14px; font-size: 10px;">▶ Watch Video</a>
+        </div>
+      </div>
+      <div class="case-right-panel">
+        <div class="metrics-row">
+          <div class="metric"><div class="metric-value">1</div><div class="metric-label">Video Campaign</div></div>
         </div>
       </div>
     </div>
