@@ -38,8 +38,9 @@
   .hero-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); }
   .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 8vw, 110px); line-height: 0.92; letter-spacing: -1px; margin-bottom: 32px; color: #111; }
   .hero-name .outline { -webkit-text-stroke: 2px var(--accent); color: transparent; }
-  .hero-desc { font-size: 15px; line-height: 1.8; color: #555; max-width: 420px; margin-bottom: 48px; }
+  .hero-desc { font-size: 15px; line-height: 1.8; color: #555; max-width: 420px; margin-bottom: 24px; }
   .hero-desc strong { color: #111; font-weight: 600; }
+  .hero-subtitle { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 1px; color: #111; margin-bottom: 48px; font-weight: bold; }
   .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
   .btn-primary { background: var(--accent); color: #fff; padding: 14px 32px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: none; cursor: none; transition: all 0.2s; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
   .btn-primary:hover { background: #e63d0f; transform: translateY(-2px); }
@@ -200,9 +201,10 @@
 <section class="hero">
   <div class="hero-bg-text">MARKETING</div>
   <div class="hero-left">
-    <div class="hero-tag">Marketing Portfolio 2025</div>
+    <div class="hero-tag">Marketing Portfolio 2026</div>
     <h1 class="hero-name">SAMEER<br><span class="outline">KHAN</span></h1>
-    <p class="hero-desc"><strong>Brand & Campaign Marketing Executive</strong> with a track record of delivering integrated campaigns that connect, convert, and leave a mark. From global corporations to independent artists — I make brands impossible to ignore.</p>
+    <p class="hero-desc">Creative and data-driven marketing professional with 2+ years delivering multi-channel integrated campaigns across global markets. Proven track record in TikTok and short-form video content creation, social media growth, and brand-consistent content strategy. MSc Marketing combined with a BSc in Computer Applications — a rare blend of creative campaign execution and technical fluency. </p>
+    <h2 class="hero-subtitle"><strong>Marketing Executive</strong></h2>
     <div class="hero-cta">
       <a href="#work" class="btn-primary">View Work</a>
       <a href="#contact" class="btn-outline">Get in Touch</a>
@@ -227,8 +229,15 @@
       <div>
         <div class="case-company">Mphasis · Bengaluru, India </div>
         <div class="case-title">Multi-Market Campaign Management</div>
-        <p class="case-desc">Led end-to-end delivery of 20+ monthly campaigns across LinkedIn, Meta & X targeting Europe, the Middle East, and the US. Managed full campaign lifecycle from briefing and asset review through to performance optimisation, ensuring brand consistency and on-time delivery across all markets.</p>
-        <div class="case-tags"><span class="tag">LinkedIn Ads</span><span class="tag">Meta</span><span class="tag">X / Twitter</span><span class="tag">Campaign Governance</span><span class="tag">Brand Stewardship</span></div>
+        <ul class="case-desc">
+          <li>Managed 20+ monthly integrated campaigns across LinkedIn, Facebook & X with end-to-end delivery coordination</li>
+          <li>Coordinated creative and media teams across European, Middle Eastern & US markets</li>
+          <li>Optimised paid and organic targeting strategies that scaled reach to 1M+ monthly impressions across priority regions</li>
+          <li>Contributed directly to funnel pipeline growth through targeted campaign optimization</li>
+          <li>Maintained full campaign documentation — briefs, asset reviews, approval logs and delivery timelines</li>
+          <li>Improved accountability and consistency across a multi-market, multi-team operation</li>
+        </ul>
+        <div class="case-tags"><span class="tag">LinkedIn Ads</span><span class="tag">Meta</span><span class="tag">X / X</span><span class="tag">Campaign Management</span><span class="tag">Brand Governance</span></div>
         <div class="social-proof">
           <a href="https://linkedin.com" class="social-link" target="_blank">↗ LinkedIn Page</a>
         </div>
@@ -238,7 +247,7 @@
           <img src="mphasis_post.png" alt="Mphasis LinkedIn post" onclick="openLightbox(this.src)">
         </div>
         <div class="metrics-row">
-          <div class="metric"><div class="metric-value">1M+</div><div class="metric-label">Monthly Impressions</div></div>
+          <div class="metric"><div class="metric-value">500K+</div><div class="metric-label">Monthly Impressions</div></div>
           <div class="metric"><div class="metric-value">20+</div><div class="metric-label">Campaigns / Mo</div></div>
         </div>
       </div>
